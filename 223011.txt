@@ -1,0 +1,62 @@
+Со овие команди креирав дирекотриум и во него инизијализирав празен Git локален репозиториум
+$ cd Desktop
+$ mkdir SI_2024_lab1_223011
+$ cd SI_2024_lab1_223011
+$ git init
+Локалното репо го поврзав со remote репото
+$ git remote add origin https://github.com/sarastankovska/SI_2024_lab1_223011.git
+Креирав  txt датотека во која го пишав моето име презиме и индекс
+$ nano README.txt
+Го додавам досега креираното во staged И правам прв commit
+$ git add *
+$ git commit -m "Initial commit"
+Ги превземав трите датотеки и повторно креирав commit 
+$ git add *
+$ git commit -m "Add starter code"
+master гранката се поврзува со remote репото
+$ git push -u origin master
+Креирам две нови гранки и се префрлам на првата 
+$ git branch bug1
+$ git branch bug2
+$ git checkout bug1
+Откако е поправена грешката во filterOddLengthStrings ставам во staged и повторно commit
+$ git add *
+$ git commit -m "Fix wrong condition in filterOddLengthStrings"
+Се префрлам на втората гранка и ја поправам грешката во makeBigStringFrom и повторно правам commit 
+$ git checkout bug2
+$ git add SILab1_2.java
+$ git commit -m "Fix wrong condition in makeBigStringFrom"
+Пак се префрлам на првата гранка
+$ git checkout bug1
+Во датотеката SILab1Main додавам повик до filterOddLengthStrings
+$ git add *
+$ git commit -m "Call method filterOddLengthStrings in main class"
+Во датотеката SILab1Main додавам повик до makeBigStringFrom
+$ git checkout bug2
+$ git add *
+$ git commit -m "Call method makeBigStringFrom in main class"
+
+$ git push -u origin bug1
+$ git push -u origin bug2
+Гранката master се спојува со bug1 по Fast-forward стратегија
+$ git checkout master
+$ git merge bug1
+
+$ git push --all origin
+
+Ќе настане конфликт бидејќи на иста линија код се повикуваат два раззлични методи,конфликтот го решив така што повикувањето на методите сега е во различна линија од кодот
+$ git checkout bug2
+$ git rebase master
+
+$ git add *
+rebase ќе продолжи откако е решен конфликтот
+$ git rebase --continue
+
+$ git checkout master
+$ git merge bug2
+$ git push --all origin
+Бидејќи јавуваше грешка користев --force
+$ git push --force --all origin
+Ги копирам сите логови во logs.txt 
+$ git log
+$ nano logs.txt
