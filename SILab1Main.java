@@ -14,5 +14,7 @@ public class SILab1Main {
             list.add(sc.next());
         }
 System.out.println(SILab1_1.filterOddLengthStringslist());
+System.out.println(SILab1_2.makeBigStringFrom(list));
+
     }
 }
